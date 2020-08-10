@@ -1,9 +1,6 @@
 package JavaRushLect8;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Collections {
 /*. HashSet из растений
@@ -55,6 +52,89 @@ public class Collections {
             System.out.println(key + " : " + value);
         }
     }*/
+/*1. Создать два списка LinkedList & ArrayList.
 
+Нужно создать два списка – LinkedList и ArrayList.
+2. Провести 10 тысяч вставок, удалений
 
+Для arrayList и linkedList провести 10 тысяч вставок, удалений, а также вызовов get и set.
+3. Измерить сколько времени занимает 10 тысяч вставок для каждого списка
+
+Измерить, сколько времени занимает 10 тысяч вставок для каждого списка.
+Метод getTimeMsOfInsert должен вернуть время его исполнения в миллисекундах.
+4. Измерить сколько времени занимает 10 тысяч вызовов get для каждого списка
+
+Измерить, сколько времени занимает 10 тысяч вызовов get для каждого списка.
+Метод getTimeMsOfGet должен вернуть время его исполнения в миллисекундах.
+5. Четыре метода
+
+Реализовать 4 метода. Они должны возвращать список, который лучше всего подходит для выполнения данных операций
+(быстрее всего справится с большим количеством операций). Ничего измерять не нужно.*/
+    // Метод добавляет 1 000 000 строк в список
+    public static Long addItemAndMeasureTimeOfArrList(ArrayList<String> stringArrayList)
+    {
+        Date currentTime = new Date();
+        for(int i = 0; i < 1000000; i++)
+        {
+            String iToStr = Integer.toString(i);
+            stringArrayList.add("xzxz" + iToStr);
+        }
+        Date currentTime2 = new Date();
+        //System.out.println(stringArrayList);
+        return currentTime2.getTime() - currentTime.getTime();
+    }
+    // Метод добавляет 1 000 000 строк в ссылочный список
+    public static Long addItemAndMeasureTimeOfLinkedList(LinkedList<String> linkedList)
+    {
+        Date currentTime3 = new Date();
+        for(int i = 0; i < 1000000; i++)
+        {
+            String iToStr = Integer.toString(i);
+            linkedList.add("xzxz" + iToStr);
+        }
+        Date currentTime4 = new Date();
+        //System.out.println(linkedList);
+        return currentTime4.getTime() - currentTime3.getTime();
+    }
+
+    // Метод добавляет 10000 строк в список  обратом порядке
+    public static Long addAtBeginItemAndMeasureTimeOfArrList(ArrayList<String> stringArrayList)
+    {
+        Date currentTime = new Date();
+        for(int i = 0; i < 10000; i++)
+        {
+            //String iToStr = Integer.toString(i);
+            stringArrayList.add(i, "xzxz");
+        }
+        Date currentTime2 = new Date();
+        //System.out.println(stringArrayList);
+        return currentTime2.getTime() - currentTime.getTime();
+    }
+
+    // Метод добавляет 10000 строк в ссылочный список в обратом порядке
+    public static Long addAtBeginItemAndMeasureTimeOfLinkedList(LinkedList<String> linkedList)
+    {
+        Date currentTime3 = new Date();
+        for(int i = 0; i < 10000; i++)
+        {
+            linkedList.add(i, "xzxz");
+        }
+        Date currentTime4 = new Date();
+        //System.out.println(linkedList);
+        return currentTime4.getTime() - currentTime3.getTime();
+    }
+
+    public static void main(String[] args){
+
+        ArrayList<String> arrayListTest = new ArrayList<>();
+        LinkedList<String> linkedListTest = new LinkedList<>();
+
+        System.out.println("В ArrayList добавленно 1 000 000 строк за " + addItemAndMeasureTimeOfArrList(arrayListTest));
+        System.out.println("В LinkedList список добавленно 1 000 000 строк за " + addItemAndMeasureTimeOfLinkedList(linkedListTest) + "/n");
+        System.out.println("В ArrayList добавленно в обравтом порядке (add(i,str)) 10000 строк за " + addAtBeginItemAndMeasureTimeOfArrList(arrayListTest));
+        System.out.println("В LinkedList список добавленно в обравтом порядке (add(i,str)) 10000 строк за " + addAtBeginItemAndMeasureTimeOfLinkedList(linkedListTest));
+        }
+
+        /*Аналогичные действия с set get и remove суь ясна вообщем*/
 }
+
