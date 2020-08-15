@@ -331,7 +331,7 @@ public class Collections {
 Удалить людей, имеющих одинаковые имена.*/
 
 
-    //Удаление элементов MAP по value
+    //Удаление элементов MAP по одинаковым значениям валуе value
     static public Map<String, String> deleteNamesake (Map<String,String> mapSonameName)
     {
         Map<String,String> mapSoNameNameSorted = new HashMap<>();
